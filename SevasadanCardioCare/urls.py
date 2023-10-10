@@ -29,7 +29,7 @@ urlpatterns = [
     path('',views.LandingPage,name='landing'),
     path('register/',views.RegisterPage,name='register'),
     path('login/',views.LogInPage,name='login'),
-    path('upload/',views.UpoloadReportPage,name='upload'),
+    path('upload/',views.UploadReportPage,name='upload'),
    
     
 ]

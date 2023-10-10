@@ -1,9 +1,9 @@
 
 from django.shortcuts import render
 import pyrebase
-
-
-
+from django import forms
+from .models import MedicalReport 
+from .forms import MedicalReportForm
 
 config={
     "apiKey": "AIzaSyD6rd2GlMmbuMkyeSlke-7j6GwY36SMIO8",
@@ -40,6 +40,10 @@ database=firebase.database()
 # except Exception as e:
 #     print(f"An error occurred: {str(e)}")
 # Create your views here.
+
+
+
+
 def LandingPage(request):
     return render(request, 'landingpage.html')
 
@@ -47,28 +51,35 @@ def RegisterPage(request):
     return render(request, 'register.html')
 def LogInPage(request):
     return render(request, 'login.html')
-def UpoloadReportPage(request):
-   
+def UploadReportPage(request):
     if request.method == 'POST':
-        form = MedicalReportForm(request.POST, request.FILES)
-        if form.is_valid():
-            # Save the data to the Django model
-            report = form.save()
-
-            # Push the data to Firebase Realtime Database
-            data = {
-                'patient_id': report.patient_id,
-                'patient_name': report.patient_name,
-                'patient_age': report.patient_age,
-                'patient_gender': report.patient_gender,
-                'comments': report.comments,
-                'assigned_doctor': report.assigned_doctor,
-                # You can add more fields if needed
-            }
-            database.child('medical_reports').push(data)  # 'medical_reports' is the Firebase database path
-
-            # You can add a success message or redirect to a thank you page
-            return redirect('thank_you_page')  # Redirect to a thank you page
+        patient_id = request.POST['patientId']
+        patient_name = request.POST['patientName']
+        patient_age = request.POST['patientAge']
+        patient_gender = request.POST['patientGender']
+        comments = request.POST['comments']
+        assigned_doctor = request.POST['assignDoctor']
+        
+        # Handle file upload
+        report_file = request.FILES['reportFile']
+        # You can save the report_file to a cloud storage service or server storage
+        
+        # Construct data dictionary for Firebase
+        data = {
+            'patient_id': patient_id,
+            'patient_name': patient_name,
+            'patient_age': patient_age,
+            'patient_gender': patient_gender,
+            'comments': comments,
+            'assigned_doctor': assigned_doctor,
+            # Add other fields as needed
+        }
+        
+        # Push the data to Firebase Realtime Database
+        database.child('medical_reports').push(data)  # 'medical_reports' is the Firebase database path
+        
+        # You can add a success message or redirect to a thank you page
+        return render(request, 'uploadreport.html')  # Redirect to a thank you page
     else:
         form = MedicalReportForm()
 
