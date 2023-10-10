@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+  <style>
+    /* Add your CSS styles here */
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 30; /* Reset default margin */
+    }
+
+    .container {
+      
+        background-color: #fff;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: #ff69b4;
+        text-align: center;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    select, input[type="text"], input[type="password"], input[type="file"] {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* Additional padding to the left of input elements */
+    input[type="text"],
+    input[type="password"],
+    input[type="file"] {
+        padding-left: 10px;
+    }
+
+    .btn {
+        background-color: #ff69b4;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #ff4d79;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <h2>Create Account</h2>
+        <label for="registrationType">Select Registration Type:</label>
+        <select id="registrationType">
+            <option value="cardiologist">As Cardiologist</option>
+            <option value="ecgLaboratory">As ECG Laboratory</option>
+        </select>
+        <br>
+        <!-- Common Fields -->
+        <label for="email">Email:</label>
+        <input type="text" id="email" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" required>
+        <label for="profilePicture">Profile Picture:</label>
+        <input type="file" id="profilePicture" accept="image/*" required>
+
+        <!-- Fields for Cardiologist -->
+        <div id="cardiologistFields" style="display: none;">
+            <label for="doctorName">Doctor's Name:</label>
+            <input type="text" id="doctorName" required>
+            <label for="adharIdProof">Adhar ID Proof:</label>
+            <input type="text" id="adharIdProof" required>
+            <label for="hospitalName">Corresponding Hospital:</label>
+            <input type="text" id="hospitalName" required>
+            <label for="hospitalAddress">Hospital Address:</label>
+            <input type="text" id="hospitalAddress" required>
+            <label for="certificate">Certificate (Document Upload):</label>
+            <input type="file" id="certificate" accept=".pdf, .doc, .docx" required>
+          
+        </div>
+
+        <!-- Fields for ECG Laboratory -->
+        <div id="ecgLaboratoryFields" style="display: none;">
+            <label for="labHeadName">Laboratory Head Name:</label>
+            <input type="text" id="labHeadName" required>
+            <label for="labAdharIdProof">Adhar ID Proof:</label>
+            <input type="text" id="labAdharIdProof" required>
+            <label for="labAddress">Laboratory Address:</label>
+            <input type="text" id="labAddress" required>
+            <label for="labCertificates">Certificates (Document Upload):</label>
+            <input type="file" id="labCertificates" accept=".pdf, .doc, .docx" required>
+        </div>
+
+        <button class="btn">Register</button>
+        <h1>Have regsitred ?  <a><u>Log-In</u></a></h1>
+    </div>
+<script>
+    // JavaScript to show/hide fields based on registration type selection
+    const registrationType = document.getElementById("registrationType");
+    const cardiologistFields = document.getElementById("cardiologistFields");
+    const ecgLaboratoryFields = document.getElementById("ecgLaboratoryFields");
+
+    // Show Cardiologist fields by default
+    cardiologistFields.style.display = "block";
+    ecgLaboratoryFields.style.display = "none";
+
+    registrationType.addEventListener("change", function() {
+        if (registrationType.value === "cardiologist") {
+            cardiologistFields.style.display = "block";
+            ecgLaboratoryFields.style.display = "none";
+        } else if (registrationType.value === "ecgLaboratory") {
+            cardiologistFields.style.display = "none";
+            ecgLaboratoryFields.style.display = "block";
+        } else {
+            cardiologistFields.style.display = "none";
+            ecgLaboratoryFields.style.display = "none";
+        }
+    });
+</script>
+
+</body>
+</html>

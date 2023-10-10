@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sevasadan CardioCare</title>
+    <style>
+        /* Styles for the navigation bar */
+        .navbar {
+            background-color: #ff69b4; /* Pinkish heart color */
+            overflow: hidden;
+            display: flex; /* Use flexbox to make the content inline */
+            justify-content: space-between; /* Spread content horizontally */
+            align-items: center; /* Center vertically */
+            padding: 10px 20px; /* Add padding for spacing */
+            height: 70px; /* Reduce navbar height */
+        }
+
+        .navbar a {
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 30px;
+        }
+
+        .navbar a.right {
+            background-color: #ff4d79; /* Light red background */
+            border: none;
+            color: white;
+            padding: 14px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 26px;
+            margin-left: 15px; /* Reduce left margin */
+        }
+
+        /* Styles for the background image and text */
+        .background {
+            background-image: url('/static/images/heart.jpg'); /* Replace 'your-image.jpg' with the image URL */
+            background-size: cover;
+            background-position: center;
+            height: 500px; /* Adjust the height as needed */
+            text-align: left;
+            padding-top: 100px;
+            padding-left: 20px;
+            color: red;
+            font-size: 26px;
+        }
+
+        /* Styles for the contact details */
+        .contact {
+            background-color: #ff69b4; /* Pinkish heart color */
+            color: black;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 20px;
+        }
+
+        .title {
+            background-color: #ff69b4; /* Pinkish heart color */
+            color: white;
+            text-align: left;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <div class="title"><h1><i>Sevasadan CardioCare</i></h1></div>
+        <a href="#" class="right">Login</a>
+        <a href="/register" class="right">Register</a>
+    </div>
+
+    <!-- Background image with text -->
+    <div class="background">
+        <h1>Welcome to Sevasadan CardioCare</h1>
+        <p>Your trusted partner in cardiovascular health.</p>
+    </div>
+
+    <!-- Contact details -->
+    <div class="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@sevasadancardio.com</p>
+        <p>Phone: +1 (123) 456-7890</p>
+    </div>
+</body>
+</html>

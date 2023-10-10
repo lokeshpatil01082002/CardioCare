@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Add your CSS styles here */
+
+        body {
+
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin-top: 20; /* Reset default margin */
+        }
+
+        .container {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #ff69b4;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select, input[type="text"], input[type="password"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Additional padding to the left of input elements */
+        input[type="text"],
+        input[type="password"],
+        input[type="file"] {
+            padding-left: 10px;
+        }
+
+        .btn {
+            background-color: #ff69b4;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ff4d79;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <label for="userType">Select User Type:</label>
+        <select id="userType">
+            <option value="cardioSpecialist">As CardioSpecialist</option>
+            <option value="ecgLaboratory">As ECG Laboratory</option>
+            <option value="patient">As Patient</option>
+        </select>
+
+        <!-- Common Fields -->
+        <label for="email">Email:</label>
+        <input type="text" id="email" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+
+        <!-- Fields for CardioSpecialist -->
+        <div id="cardioSpecialistFields" style="display: none;">
+            <!-- Additional Fields for CardioSpecialist -->
+        </div>
+
+        <!-- Fields for ECG Laboratory -->
+        <div id="ecgLaboratoryFields" style="display: none;">
+            <!-- Additional Fields for ECG Laboratory -->
+        </div>
+
+        <!-- Fields for Patient -->
+        <div id="patientFields" style="display: none;">
+            <!-- Additional Fields for Patient -->
+            <label for="adharId">Adhar Id:</label>
+            <input type="text" id="adharId" required>
+        </div>
+
+        <button class="btn">Login</button>
+    </div>
+
+    <script>
+        // JavaScript to show/hide fields based on user type selection
+        const userType = document.getElementById("userType");
+        const cardioSpecialistFields = document.getElementById("cardioSpecialistFields");
+        const ecgLaboratoryFields = document.getElementById("ecgLaboratoryFields");
+        const patientFields = document.getElementById("patientFields");
+
+        // Show CardioSpecialist fields by default
+        cardioSpecialistFields.style.display = "block";
+        ecgLaboratoryFields.style.display = "none";
+        patientFields.style.display = "none";
+
+        userType.addEventListener("change", function() {
+            if (userType.value === "cardioSpecialist") {
+                cardioSpecialistFields.style.display = "block";
+                ecgLaboratoryFields.style.display = "none";
+                patientFields.style.display = "none";
+            } else if (userType.value === "ecgLaboratory") {
+                cardioSpecialistFields.style.display = "none";
+                ecgLaboratoryFields.style.display = "block";
+                patientFields.style.display = "none";
+            } else if (userType.value === "patient") {
+                cardioSpecialistFields.style.display = "none";
+                ecgLaboratoryFields.style.display = "none";
+                patientFields.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
